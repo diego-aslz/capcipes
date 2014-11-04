@@ -1,0 +1,3 @@
+#!/bin/sh
+
+gem build capcipes.gemspec && gem push capcipes-*.gem && rm capcipes-*.gem
