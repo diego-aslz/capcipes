@@ -2,9 +2,7 @@ namespace :database do
   desc "Generate the database.yml configuration file."
   task :setup do
     on roles(:app) do
-      unless package_exists?('libmysqlclient-dev')
-        execute :'apt-get', 'install', 'libmysqlclient-dev', '-y'
-      end
+      install_package 'libmysqlclient-dev'
       template "database.yml", "#{shared_path}/config/database.yml"
     end
   end

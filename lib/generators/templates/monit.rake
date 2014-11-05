@@ -2,7 +2,7 @@ namespace :monit do
   desc "Install Monit"
   task :install do
     on roles(:app, :web) do
-      execute "apt-get -y install monit" unless package_exists?('monit')
+      install_package 'monit'
     end
   end
   before "deploy", "monit:install"

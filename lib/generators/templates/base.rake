@@ -6,3 +6,7 @@ end
 def package_exists?(name)
   test("dpkg -l | grep #{name} > /dev/null")
 end
+
+def install_package(name)
+  execute :'apt-get', 'install', name, '-y' unless package_exists?(name)
+end
