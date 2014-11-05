@@ -15,7 +15,7 @@ class CapcipesGenerator < ::Rails::Generators::Base
     return unless options.unicorn?
     template 'unicorn.rake',    'lib/capistrano/tasks/unicorn.rake'
     template 'unicorn.rb',      'lib/capistrano/tasks/templates/unicorn.rb'
-    template 'unicorn_init.sh', 'lib/capistrano/tasks/templates/unicorn_init.erb'
+    template 'unicorn_init.sh', 'lib/capistrano/tasks/templates/unicorn_init.sh'
   end
 
   def nginx
