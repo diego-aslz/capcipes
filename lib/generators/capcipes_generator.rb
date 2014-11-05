@@ -2,6 +2,7 @@ class CapcipesGenerator < ::Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
   class_option :unicorn,  type: :boolean, default: true
   class_option :nginx,    type: :boolean, default: true
+  class_option :monit,    type: :boolean, default: true
   class_option :database, type: :string,  default: 'mysql'
 
   def install
@@ -29,6 +30,16 @@ class CapcipesGenerator < ::Rails::Generators::Base
               'lib/capistrano/tasks/database.rake'
     template  "database_#{options.database}.yml",
               'lib/capistrano/tasks/templates/database.yml'
+  end
+
+  def monit
+    return unless options.monit?
+    template 'monit.rake',    'lib/capistrano/tasks/monit.rake'
+    template 'monit/monitrc', 'lib/capistrano/tasks/templates/monit/monitrc'
+    %w(nginx unicorn).each do |monit|
+      next unless options.send("#{monit}?")
+      template "monit/#{monit}", "lib/capistrano/tasks/templates/monit/#{monit}"
+    end
   end
 
   protected
