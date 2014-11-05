@@ -5,7 +5,9 @@ class CapcipesGenerator < ::Rails::Generators::Base
   class_option :database, type: :string,  default: 'mysql'
 
   def install
-    template 'base.rake', 'lib/capistrano/tasks/base.rake'
+    template 'base.rake',    'lib/capistrano/tasks/base.rake'
+    template 'secrets.rake', 'lib/capistrano/tasks/secrets.rake'
+    template 'secrets.yml',  'lib/capistrano/tasks/templates/secrets.yml'
   end
 
   def unicorn
