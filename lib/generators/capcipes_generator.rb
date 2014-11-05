@@ -12,4 +12,14 @@ class CapcipesGenerator < ::Rails::Generators::Base
     template 'unicorn.rb',      'lib/capistrano/tasks/templates/unicorn.rb'
     template 'unicorn_init.sh', 'lib/capistrano/tasks/templates/unicorn_init.erb'
   end
+
+  protected
+
+  def application_name
+    if defined?(Rails) && Rails.application
+      Rails.application.class.name.split('::').first.underscore
+    else
+      "application"
+    end
+  end
 end
