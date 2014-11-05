@@ -1,0 +1,5 @@
+Description:
+    Generates Capistrano Recipes useful for Rails Applications.
+
+Example:
+    rails generate capcipes
