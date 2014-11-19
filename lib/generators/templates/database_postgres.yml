@@ -1,5 +1,5 @@
 default: &default
-  host: <%= fetch(:database_host) { "localhost" } %>
+  host: 127.0.0.1
   port: 5432
   adapter: postgresql
   encoding: utf8
