@@ -6,5 +6,5 @@ namespace :database do
       template "database.yml", "#{shared_path}/config/database.yml"
     end
   end
-  before "deploy:check", "database:setup"
+  before "deploy:check:linked_files", "database:setup"
 end

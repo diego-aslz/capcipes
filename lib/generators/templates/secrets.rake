@@ -6,5 +6,5 @@ namespace :secrets do
       template "secrets.yml", file unless test("[ -f #{file} ]")
     end
   end
-  before "deploy:check", "secrets:setup"
+  before "deploy:check:linked_files", "secrets:setup"
 end
